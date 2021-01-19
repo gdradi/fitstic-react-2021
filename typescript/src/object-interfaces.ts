@@ -27,7 +27,7 @@ function sommaDiPunti(point1: Point, point2: Point): Point {
 }
 
 let myPointSomma = sommaDiPunti(myPoint1, myPoint2);
-console.log(myPointSomma.x, myPointSomma.y);
+console.log(`Punto somma  [x: ${myPointSomma.x}; y: ${myPointSomma.y}]`);
 
 
 // Esempio di somma tra numeri e stringhe. L'ordine conta!
