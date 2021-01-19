@@ -84,6 +84,7 @@ let mySquare2 = new Square();
 mySquare = mySquare2;
 
 
+
 /**
  * Poliformismo
  * 
@@ -94,8 +95,9 @@ mySquare = mySquare2;
  */
 let myShape: Shape;
 myShape = new Square();
-myShape = new Triangle();
+//myShape = new Triangle();
 
+myShape.getNumeroDiLati();
 
 
 /***
@@ -131,9 +133,16 @@ myShape = new Triangle();
  * typescript è in grado di fare type inference su i parametri in input e l'output,
  * perchè li recupera dall'interfaccia funzionale Somma
  */
- let sommaFunzionale: Somma = (n1, n2) => {
-    return n1+n2;
+
+
+ let sommaFunzionale: Somma = function (n1, n2) {
+     return n1+n2;
  }
+ 
+ let sommaFunzionale2: Somma = (n1, n2) => {
+    return n1+n2;
+}
+
 
  /**
   * Polimorfismo applicato alle funzioni
@@ -144,3 +153,6 @@ myShape = new Triangle();
 
  // Utilizzo della funzione
  let risultato = myFunction(1, 2);
+
+
+ console.log(`Risultato: ${risultato}`);
