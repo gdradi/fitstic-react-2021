@@ -13,7 +13,7 @@ import "./styles/app.css"
  * 
  * <[nome] />   dove [nome] = App
  */
-let App: React.FunctionComponent = () => {
+const App: React.FunctionComponent = () => {
 
     let name = "Giacomo";
     let surname = "Dradi";
@@ -76,7 +76,13 @@ let App: React.FunctionComponent = () => {
     }
 
 
+    let data: Date = new Date();
+
+
     return <>
+
+        <UserProfile />
+   
         <div className="box">
             {/* Visualizzazione di variabili */}
             ciao! {name} {surname}
@@ -96,7 +102,6 @@ let App: React.FunctionComponent = () => {
             {/* Secondo tipo di rendering condizionale: operatore && (and)*/}
             {condizioneBooleana && <div>condizione vera con operatore and</div>}
             {!condizioneBooleana && <div>condizione falsa con operatore and</div>}
-
 
             {/* Utilizzo di if, else if, else attraverso concatenazione di operatori ternari */}
             {name.length >= 5 ? <div>caso1</div>
@@ -120,10 +125,21 @@ let App: React.FunctionComponent = () => {
                 </div>
             )}
 
+            <div>{data.toString()}</div>
+
         </div>
         <div>secondo div</div>
     </>
 };
+
+
+const UserProfile: React.FunctionComponent = () => {
+    let username = "gdradi";
+    return (
+        <div className="box">{username}</div>
+    );
+};
+
 
 /**
  * Significato di questa riga:
@@ -134,4 +150,10 @@ let App: React.FunctionComponent = () => {
  * Attenzione: nella pagina index.html DEVE esistere un elemento
  * che abbia come id = "root"
  */
-ReactDOM.render(<App />, document.getElementById('root'));
+
+
+function myFunction() {
+    ReactDOM.render(<App />, document.getElementById('root'));
+};
+
+setInterval(myFunction, 2000);
