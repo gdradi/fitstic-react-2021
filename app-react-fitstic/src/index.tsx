@@ -19,6 +19,18 @@ const App: React.FunctionComponent = () => {
     let surname = "Dradi";
 
 
+    let myUser: User = {
+        name: "Giacomo",
+        surname: "Dradi"
+    };
+
+    let myUser2: User = {
+        name: "Pippo",
+        surname: "Pluto"
+    };
+
+
+
     /**
      * 
      * Rendering condizionale
@@ -81,7 +93,9 @@ const App: React.FunctionComponent = () => {
 
     return <>
 
-        <UserProfile />
+        <Header />
+        <UserProfile user={myUser} />
+        <UserProfile user={myUser2} />
    
         <div className="box">
             {/* Visualizzazione di variabili */}
@@ -133,10 +147,45 @@ const App: React.FunctionComponent = () => {
 };
 
 
-const UserProfile: React.FunctionComponent = () => {
-    let username = "gdradi";
+
+/**
+ * Componente header (piu semplice possibile)
+ */
+const Header: React.FunctionComponent = () => {
+    return <div className="header">
+        Header component
+    </div>
+};
+
+
+
+/**
+ * Input del componente UserProfile
+ * 
+ * NB: gli input dei componenti in REACT si chiamano PROPS
+ */
+
+interface User {
+    name: string;
+    surname: string;
+}
+
+interface UserProfileProps {
+    user: User
+}
+
+/**
+ * Componente user profile
+ * 
+ * Attraverso il generic <UserProfileProps>,
+ * sto dicendo che il TIPO delle props in input è UserProfileProps
+ */
+const UserProfile: React.FunctionComponent<UserProfileProps> = (props) => {
     return (
-        <div className="box">{username}</div>
+        <div className="user-profile">
+            <div className="name">{props.user.name}</div>
+            <div className="surname">{props.user.surname}</div>
+        </div>
     );
 };
 
