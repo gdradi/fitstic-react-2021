@@ -121,6 +121,9 @@ export let Contatore: React.FunctionComponent = () => {
             }} />
             <div>InputValue: {inputValue}</div>
 
+
+ 
+
             <input type="password" value={passwordValue} onChange={(event) => {
                 let valoreInputato = event.target.value;
                 console.log(valoreInputato);

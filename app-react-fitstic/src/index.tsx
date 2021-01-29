@@ -1,9 +1,8 @@
-//import "./esercizi/2/index";
-//import "./lezione";
-
-import ReactDOM from "react-dom";
-import { Contatore } from "./contatore";
 import "./styles/app.css";
+import ReactDOM from "react-dom";
+import React from "react";
+
+import {PostsListComponent} from "./postcreate/PostsListComponent";
 
 
-ReactDOM.render(<Contatore />, document.getElementById('root'));
+ReactDOM.render(<PostsListComponent />, document.getElementById('root'));

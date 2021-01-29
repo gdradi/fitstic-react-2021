@@ -1,36 +1,36 @@
 body {
-    padding-top: 61px;
+    padding: 61px;
 }
 
-.box {
-    margin: 20px;
-    padding: 20px;
-    background: #efefef;
-    border: 1px solid #Ccc;
+.cont-post{
+    padding: 10px;
+    width: 30rem;
+    height: 170px;
+    border: 1px solid #ccc;
+    box-shadow: 5px 3px 10px #888888;
+    background: #ecebeb;
     border-radius: 10px;
 }
-
-.header {
-    line-height: 61px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    height: 61px;
-    background: rgb(22, 26, 41);
-    color: white;
-    padding: 0 25px;
+.autore-post h3{
+    margin: 0;
+    padding: 10px;
+    padding-bottom: 0;
 }
-
-
-.user-profile {
-    margin: 20px;
+.autore-post div{
+    padding: 5px;
+    padding-top: 0;
+    padding-left: 10px;
+    color: darkcyan;
+    font-size: 13px;
+}
+.tw-post{
     padding: 20px;
-    background: #ebebeb;
-    border: 1px solid #Ccc;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 250px;
+    background: #fff;
+    border-radius: 5px;
+}
+.data-post{
+    color: darkcyan;
+    font-size: 13px;
+    padding-left: 40px;
+    padding-top: 10px;
 }
