@@ -17,6 +17,9 @@ export let Contatore: React.FunctionComponent = () => {
     let [count, setCount] = useState<number>(0);
     let [data, setData] = useState<Date>(new Date());
 
+    let [inputValue, setInputValue] = useState<string>("");
+    let [passwordValue, setPasswordValue] = useState<string>("");
+
     /**
      * Per modificare lo stato, 
      * !!NON si deve modificare la variabile direttamente!!
@@ -63,9 +66,11 @@ export let Contatore: React.FunctionComponent = () => {
        * (quindi al montaggio, in questo caso)
        * il secondo è un array vuoto [] <- (obbligatorio per l'evento di montaggio)
        */
-     useEffect(() => {
+     
+    useEffect(() => {
          console.log("mounting!");
-         setInterval(() => {
+
+         let myFunction = () => {
             /**
              * Abbiamo detto che non posso fare
              * count = count+1
@@ -75,7 +80,9 @@ export let Contatore: React.FunctionComponent = () => {
             //console.log("Esecuzione di setInterval", count);
             //setCount(count +1);
             setData(new Date());
-        }, 1000);
+        };
+
+         setInterval(myFunction, 1000);
 
         /**
          * Questa funzione è il lifecycle hook di unmounting
@@ -90,15 +97,44 @@ export let Contatore: React.FunctionComponent = () => {
 
 
 
+     let callbackDelBottone = (e: React.MouseEvent) => {
+        console.log("Premuto il tasto incremento", e);
+        setCount(count +1);
+
+        console.log(inputValue);
+        //count = count+1;
+    };
 
     return <div>
         <div>Contatore</div>
         <div>Valore: {count}</div>
         <div>Data: {data.toString()}</div>
-        <button onClick={() => {
-            console.log("Premuto il tasto incremento");
-            setCount(count +1);
-            //count = count+1;
-        }}>Incremento</button>
+        <button onClick={callbackDelBottone}>Incremento</button>
+
+        <div className="box">
+
+            {/* Input di tipo CONTROLLED */}
+            <input type="text" value={inputValue} onChange={(event) => {
+                let valoreInputato = event.target.value;
+                console.log(valoreInputato);
+                setInputValue(valoreInputato);
+            }} />
+            <div>InputValue: {inputValue}</div>
+
+            <input type="password" value={passwordValue} onChange={(event) => {
+                let valoreInputato = event.target.value;
+                console.log(valoreInputato);
+                setPasswordValue(valoreInputato);
+            }} />
+            <div>PasswordValue: {passwordValue}</div>
+            <div><button onClick={() => {
+                console.log("Login dell'utente", inputValue, "con password", passwordValue)
+            }}>Login</button></div>
+        </div>
     </div>
 }
+
+/**
+ *  single source of truth
+ * 
+ */
