@@ -3,6 +3,7 @@ import React from "react";
 import { Post } from "./Post";
 import { CreatePostCallback, CreatePostComponent } from "./CreatePostComponent";
 import { DeletePostCallback, PostComponent } from "./PostComponent";
+import { StatisticsComponent } from "./StatisticsComponent";
 
 
 
@@ -24,12 +25,21 @@ export const PostsListComponent: React.FunctionComponent = () => {
     };
 
     // Callback di eliminazione
-    let callbackDelete: DeletePostCallback = (id) => {
-        console.log("Callback delete: ricevuto id", id);   
+    let callbackDelete: DeletePostCallback = (idDaEliminare) => {
+        console.log("Callback delete: ricevuto id", idDaEliminare);   
+        
+        /**
+         * In italiano si legge:
+         * "dammi una nuova lista che contenga SOLO gli elementi per cui la condizione è vera" ->
+         * "dammi una nuova lista che contenga SOLO gli elementi il cui id (item.id) è diverso dall'idDaEliminare"
+         */
+        let nuovaLista = listaPostValue.filter(item => item.id !== idDaEliminare);
+        setListaPostValue(nuovaLista);
     }
 
 
     return <>
+   <StatisticsComponent lista={listaPostValue} /> 
    <CreatePostComponent callback={callbackCreate} />
    {listaPostValue.map((item, index)=><PostComponent key={index} deleteCallback={callbackDelete} post={item}/>)}    
     </>

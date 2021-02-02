@@ -11,7 +11,7 @@ import "./styles/post.css";
 import ReactDOM from "react-dom";
 import React from "react";
 
-import {PostsListComponent} from "./postcreate/PostsListComponent";
+import {PostsListComponent} from "./app/PostsListComponent";
 
 
 ReactDOM.render(<PostsListComponent />, document.getElementById('root'));
