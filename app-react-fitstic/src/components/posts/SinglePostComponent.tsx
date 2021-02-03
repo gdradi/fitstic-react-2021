@@ -23,7 +23,11 @@ interface PostProps {
 export const SinglePostComponent: React.FunctionComponent<PostProps> = (props) => {
 
     return (
+
+
     <div className="post-body">
+
+        {/* se sono in visualizzazione, faccio vedere questo */}
         <div className="post-author">{props.post.author}</div>
         <div className="post-delete-btn">
             <button className="btn-delete" title="Elimina Post" onClick={() => {
@@ -43,6 +47,13 @@ export const SinglePostComponent: React.FunctionComponent<PostProps> = (props) =
                 : <></>
             }
         </div>
+
+    {/* se sono in modifica, faccio vedere quest'altro */}
+    {/* blabla */}
+
+
     </div>
+
+
     );
 }
