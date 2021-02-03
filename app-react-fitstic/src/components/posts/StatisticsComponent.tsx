@@ -1,5 +1,4 @@
-import { Post } from "./Post"
-
+import { Post } from "../../models/Post";
 
 export interface StatisticsComponentProps {
     lista: Post[];
@@ -7,6 +6,6 @@ export interface StatisticsComponentProps {
 
 export let StatisticsComponent: React.FunctionComponent<StatisticsComponentProps> = (props) => {
     return (
-        <div>Numero di post: {props.lista.length}</div>
+        <div className="statistic">Numero di post: {props.lista.length}</div>
     )
 }
