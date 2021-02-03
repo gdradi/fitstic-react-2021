@@ -17,6 +17,8 @@ export let PostsListComponent: React.FunctionComponent<PostsListComponentProps> 
 
     return <div className="postsListComponent">
         <CreatePostComponent createCallback={props.createCallback}/>
+        
         {props.postList.map((item, index) => <SinglePostComponent deleteCallback={props.deleteCallback} key={index} post={item}/>).reverse()}
+        
     </div>
 }
