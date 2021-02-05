@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {StatisticsComponent} from "./posts/StatisticsComponent";
 import {PostsListComponent} from "./posts/PostListComponent";
 import { Post } from "../models/Post";
-import { CreatePostCallback} from "./posts/CreatePostComponent";
+import { CreatePostCallback, EditPostCallback } from "../models/CallbackInterfaces";
 import { DeletePostCallback } from "./posts/SinglePostComponent";
 
 export const LiftingStateComponent: React.FunctionComponent = () => {
@@ -28,8 +28,18 @@ export const LiftingStateComponent: React.FunctionComponent = () => {
         setListOfPost(listOfPost.filter(item => item.id !== id));
     }
 
+
+    /**
+     * Callback di modifica
+     */
+    let callbackEditPost: EditPostCallback = (editedPost) => {
+        setListOfPost(listOfPost.map(item => item.id === editedPost.id ? editedPost : item));
+    }
+
+
+
     return <>
-        <PostsListComponent postList={listOfPost} createCallback={callbackCreatePost} deleteCallback={callbackDeletePost}/>
+        <PostsListComponent editCallback={callbackEditPost} postList={listOfPost} createCallback={callbackCreatePost} deleteCallback={callbackDeletePost}/>
         <StatisticsComponent lista={listOfPost}/>
     </>
 }

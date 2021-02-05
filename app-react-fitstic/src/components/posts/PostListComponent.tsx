@@ -1,12 +1,14 @@
 import React from "react";
+import { CreatePostCallback, EditPostCallback } from "../../models/CallbackInterfaces";
 import { Post } from "../../models/Post";
-import { CreatePostCallback, CreatePostComponent } from "./CreatePostComponent";
+import { CreatePostComponent } from "./CreatePostComponent";
 import { DeletePostCallback, SinglePostComponent } from "./SinglePostComponent";
 
 export interface PostsListComponentProps {
     postList: Post[];
     createCallback: CreatePostCallback;
     deleteCallback: DeletePostCallback;
+    editCallback: EditPostCallback;
 }
 
 /**
@@ -18,7 +20,7 @@ export let PostsListComponent: React.FunctionComponent<PostsListComponentProps> 
     return <div className="postsListComponent">
         <CreatePostComponent createCallback={props.createCallback}/>
         
-        {props.postList.map((item, index) => <SinglePostComponent deleteCallback={props.deleteCallback} key={index} post={item}/>).reverse()}
+        {props.postList.map((item, index) => <SinglePostComponent editCallback={props.editCallback} deleteCallback={props.deleteCallback} key={index} post={item}/>).reverse()}
         
     </div>
 }

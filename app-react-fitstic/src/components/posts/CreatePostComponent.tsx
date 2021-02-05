@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { Post } from "../../models/Post";
-
-export interface CreatePostCallback {
-    (post: Post): void;
-}
+import { CreatePostCallback } from "../../models/CallbackInterfaces";
 
 interface CreatePostComponentProps {
     createCallback: CreatePostCallback;

@@ -2,10 +2,10 @@
  * L'interfaccia Post contiene le caratteristiche che strutturano il Post.
  */
 export interface Post {
-    id: number;
-    author: string;
-    title: string;
-    content: string;
-    date: string;
-    isEdited: boolean;
+    readonly id: number;
+    readonly author: string;
+    readonly title: string;
+    readonly content: string;
+    readonly date: string;
+    readonly isEdited: boolean;
 }
