@@ -4,6 +4,7 @@ import {PostsListComponent} from "./posts/PostListComponent";
 import { Post } from "../models/Post";
 import { CreatePostCallback, EditPostCallback } from "../models/CallbackInterfaces";
 import { DeletePostCallback } from "./posts/SinglePostComponent";
+import { BrowserRouter, HashRouter } from "react-router-dom";
 
 export const LiftingStateComponent: React.FunctionComponent = () => {
 
@@ -34,12 +35,15 @@ export const LiftingStateComponent: React.FunctionComponent = () => {
      */
     let callbackEditPost: EditPostCallback = (editedPost) => {
         setListOfPost(listOfPost.map(item => item.id === editedPost.id ? editedPost : item));
+        console.log(listOfPost);
     }
 
 
 
     return <>
-        <PostsListComponent editCallback={callbackEditPost} postList={listOfPost} createCallback={callbackCreatePost} deleteCallback={callbackDeletePost}/>
-        <StatisticsComponent lista={listOfPost}/>
+        <HashRouter>
+            <PostsListComponent editCallback={callbackEditPost} postList={listOfPost} createCallback={callbackCreatePost} deleteCallback={callbackDeletePost}/>
+            <StatisticsComponent lista={listOfPost}/>
+        </HashRouter>
     </>
 }
