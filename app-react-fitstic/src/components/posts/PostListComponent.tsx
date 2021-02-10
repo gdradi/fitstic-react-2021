@@ -4,6 +4,7 @@ import { Post } from "../../models/Post";
 import { CreatePostComponent } from "./CreatePostComponent";
 import { DeletePostCallback, SinglePostComponent } from "./SinglePostComponent";
 import { BrowserRouter, Switch, Route, Link, useLocation } from "react-router-dom";
+import { PostDetailComponent } from "./PostDetailComponent";
 
 
 export interface PostsListComponentProps {
@@ -66,6 +67,16 @@ export let PostsListComponent: React.FunctionComponent<PostsListComponentProps> 
                        
                     }}/>
                 </Route>
+
+
+                {/* 
+                 Rotta 3:  /post/:id   visualizzazione del post con id = :id 
+                            /post/<???????>    =>     <???????>  sarà per voi il contenuto della variabile id
+                */}
+                 <Route exact path={"/post/:id"}>
+                     <PostDetailComponent editCallback={props.editCallback} deleteCallback={props.deleteCallback} postList={props.postList}  />
+                     {/* <SinglePostComponent  editCallback={props.editCallback} deleteCallback={props.deleteCallback} post={} /> */}
+                 </Route>
 
                 
             </Switch>

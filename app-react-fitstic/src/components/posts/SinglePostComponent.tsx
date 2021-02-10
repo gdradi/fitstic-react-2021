@@ -38,6 +38,7 @@ export const SinglePostComponent: React.FunctionComponent<PostProps> = (props) =
 
         {/* se sono in visualizzazione, faccio vedere questo */}
         <div className="post-author">{props.post.author}</div>
+        <div>Id: {props.post.id}</div>
         <div className="post-delete-btn">
             {isEditing === true 
                 ? <><button className="btn-edit" title="Edit Post" onClick={() => {

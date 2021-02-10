@@ -4,7 +4,7 @@ import {PostsListComponent} from "./posts/PostListComponent";
 import { Post } from "../models/Post";
 import { CreatePostCallback, EditPostCallback } from "../models/CallbackInterfaces";
 import { DeletePostCallback } from "./posts/SinglePostComponent";
-import { BrowserRouter, HashRouter } from "react-router-dom";
+import { BrowserRouter, HashRouter, MemoryRouter } from "react-router-dom";
 
 export const LiftingStateComponent: React.FunctionComponent = () => {
 
