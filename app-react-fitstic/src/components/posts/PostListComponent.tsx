@@ -43,13 +43,14 @@ export let PostsListComponent: React.FunctionComponent<PostsListComponentProps> 
     return (
 
         <div className="postsListComponent">
-
-            <div>Pathname: {location.pathname}</div>
             
             <div className="navbar">
                 <Link to={ERoute.HOME}>Home</Link>
                 <Link to={ERoute.CREATE}>Create</Link>
             </div>
+
+<div className="wrapper">
+            <div className="breadcrumb">Pathname: {location.pathname}</div>
 
             <Switch>
               
@@ -80,7 +81,7 @@ export let PostsListComponent: React.FunctionComponent<PostsListComponentProps> 
 
                 
             </Switch>
-
+            </div>
         </div>
     );
 }

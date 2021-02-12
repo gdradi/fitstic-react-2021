@@ -4,7 +4,10 @@ import {PostsListComponent} from "./posts/PostListComponent";
 import { Post } from "../models/Post";
 import { CreatePostCallback, EditPostCallback } from "../models/CallbackInterfaces";
 import { DeletePostCallback } from "./posts/SinglePostComponent";
-import { BrowserRouter, HashRouter, MemoryRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
+import { Spinner } from "./Spinner";
+
+import axios from "axios";
 
 export const LiftingStateComponent: React.FunctionComponent = () => {
 
@@ -42,8 +45,10 @@ export const LiftingStateComponent: React.FunctionComponent = () => {
 
     return <>
         <HashRouter>
+           
             <PostsListComponent editCallback={callbackEditPost} postList={listOfPost} createCallback={callbackCreatePost} deleteCallback={callbackDeletePost}/>
             <StatisticsComponent lista={listOfPost}/>
+            
         </HashRouter>
     </>
 }
