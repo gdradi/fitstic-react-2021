@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { CreatePostCallback, EditPostCallback } from "../../models/CallbackInterfaces";
 import { Post } from "../../models/Post";
 import { CreatePostComponent } from "./CreatePostComponent";
 import { DeletePostCallback, SinglePostComponent } from "./SinglePostComponent";
-import { BrowserRouter, Switch, Route, Link, useLocation } from "react-router-dom";
+import { Switch, Route, Link, useLocation } from "react-router-dom";
 import { PostDetailComponent } from "./PostDetailComponent";
 
 

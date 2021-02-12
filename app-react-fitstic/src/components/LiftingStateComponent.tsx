@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {StatisticsComponent} from "./posts/StatisticsComponent";
 import {PostsListComponent} from "./posts/PostListComponent";
 import { Post } from "../models/Post";
@@ -10,6 +10,61 @@ import { Spinner } from "./Spinner";
 import axios from "axios";
 
 export const LiftingStateComponent: React.FunctionComponent = () => {
+
+    useEffect(() => {
+
+        /**
+         * Scrivo che cosa voglio fare:
+         * in questo caso, una chiamata GET all'indirizzo 
+         * https://my.api.mockaroo.com/post.json
+         * passando come header:
+         * "X-API-Key": "419a4ac0"
+         * 
+         */
+        axios.get("https://my.api.mockaroo.com/post.json", {
+            headers: {
+                "X-API-Key": "419a4ac0"
+            }
+        }).then(
+        /**
+         * Callback che saà chiamata in caso di successo dell'operazione
+         * @param response 
+         */
+        (response) => {
+            console.log(response.data);
+            const listaDiPostOttenutaDaApi = response.data.map((data: any) => {
+                let post: Post = {
+                    author: data.author,
+                    content: data.content,
+                    date: data.date,
+                    id: data.id,
+                    isEdited: false,
+                    title: data.title
+                };
+                return post;
+            })
+            // Costruire l'array di post a apartire da response.data
+            setListOfPost(listaDiPostOttenutaDaApi);
+        }
+        ).catch(
+        /**
+         * Callback che sarà chiamata in caso di errore durante l'operazione
+         * @param error 
+         */
+        (error) => {
+            console.error(error);
+        }
+        ).finally(
+        /**
+         * Questa callback viene chiamata in ogni caso alla fine
+         */
+        () => {
+            console.log("finally");
+        }
+        )
+
+    }, []);
+
 
     /**
      * Stato della lista che contiene i post
