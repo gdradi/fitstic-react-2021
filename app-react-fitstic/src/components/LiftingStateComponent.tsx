@@ -11,6 +11,15 @@ import axios from "axios";
 
 export const LiftingStateComponent: React.FunctionComponent = () => {
 
+
+    /**
+     * Il prelievo dei dati dal server
+     * è opportuno che sia effettuato all'interno
+     * dell'hook di montaggio del componente:
+     * 
+     * questo perchè in questo modo è garantito
+     * che eseguiamo solamente una volta il caricamento dei dati
+     */
     useEffect(() => {
 
         /**
@@ -35,7 +44,7 @@ export const LiftingStateComponent: React.FunctionComponent = () => {
             const listaDiPostOttenutaDaApi = response.data.map((data: any) => {
                 let post: Post = {
                     author: data.author,
-                    content: data.content,
+                    content: data.body,
                     date: data.date,
                     id: data.id,
                     isEdited: false,
