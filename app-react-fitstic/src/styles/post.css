@@ -39,3 +39,8 @@ body {
     font-style: normal;
     text-align: center;
 }
+
+
+.alert {
+    border: 1px solid red;
+}
