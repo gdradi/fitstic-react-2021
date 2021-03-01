@@ -19,16 +19,9 @@ export const LiftingStateComponent: React.FunctionComponent = () => {
     let [isLoading, setIsLoading] = useState<boolean>(false);
     let [error, setError] = useState<any>(null);
 
-    /**
-     * Il prelievo dei dati dal server
-     * è opportuno che sia effettuato all'interno
-     * dell'hook di montaggio del componente:
-     * 
-     * questo perchè in questo modo è garantito
-     * che eseguiamo solamente una volta il caricamento dei dati
-     */
-    useEffect(() => {
 
+
+    const fetchPost = () => {
         /**
          * Scrivo che cosa voglio fare:
          * in questo caso, una chiamata GET all'indirizzo 
@@ -38,7 +31,7 @@ export const LiftingStateComponent: React.FunctionComponent = () => {
          * 
          */
         setIsLoading(true);
-        axios.get("htps://my.api.mockaroo.com/post.json", {
+        axios.get("https://my.api.mockaroo.com/post.json", {
             headers: {
                 "X-API-Key": "419a4ac0"
             }
@@ -62,6 +55,7 @@ export const LiftingStateComponent: React.FunctionComponent = () => {
                 })
                 // Costruire l'array di post a apartire da response.data
                 setListOfPost(listaDiPostOttenutaDaApi);
+                setError(null);
             }
         ).catch(
             /**
@@ -71,6 +65,12 @@ export const LiftingStateComponent: React.FunctionComponent = () => {
             (error) => {
                 console.error(error);
                 setError(error);
+                /**
+                 * Valutate se il comportamento che volete ottenere in caso di errore è:
+                 * - mantengo visualizzati i post precedentemente caricato
+                 * - oppure svuoto la lista di post precedentemente caricati
+                 */
+                //setListOfPost(null);
             }
         ).finally(
             /**
@@ -109,7 +109,22 @@ export const LiftingStateComponent: React.FunctionComponent = () => {
 
         // });
 
+    }
 
+
+
+    /**
+     * Il prelievo dei dati dal server
+     * è opportuno che sia effettuato all'interno
+     * dell'hook di montaggio del componente:
+     * 
+     * questo perchè in questo modo è garantito
+     * che eseguiamo solamente una volta il caricamento dei dati
+     */
+    useEffect(() => {
+        // onCreate() di Android
+        // componentDidMount() 
+        fetchPost();
     }, []);
 
 
@@ -144,6 +159,11 @@ export const LiftingStateComponent: React.FunctionComponent = () => {
     return <>
         <HashRouter>
 
+            <div>
+                <button onClick={() => {
+                    fetchPost();
+                }}>Ricarica post</button>
+            </div>
             {error != null && <ErrorHandler error={error} />}
 
             {isLoading === true && <Spinner />}
