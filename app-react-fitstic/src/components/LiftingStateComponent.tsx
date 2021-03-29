@@ -34,6 +34,7 @@ export const LiftingStateComponent: React.FunctionComponent = () => {
         axios.get("https://my.api.mockaroo.com/post.json", {
             headers: {
                 "X-API-Key": "419a4ac0"
+                //"Authorization": "Bearer <jwtToken>"
             }
         }).then(
             /**
@@ -41,7 +42,6 @@ export const LiftingStateComponent: React.FunctionComponent = () => {
              * @param response 
              */
             (response) => {
-                console.log(response.data);
                 const listaDiPostOttenutaDaApi = response.data.map((data: any) => {
                     let post: Post = {
                         author: data.author,
