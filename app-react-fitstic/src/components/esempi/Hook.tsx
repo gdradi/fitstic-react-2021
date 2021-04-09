@@ -72,3 +72,57 @@ export const HookExample: React.FunctionComponent<{
     </>
     )
 }
+
+
+
+
+
+
+/***
+ * 
+ * Props del componente:  - oggetto da modificare
+ * Gli stati del compoennte sono le proprietà di questo oggetto che voglio modificare nel form * 
+ * Gli input del form sono controllati da questi stati
+ * 
+ * Istante t1 = montaggio del componente con props  item={Oggetto1} -> inizializzazione degli stati con i valori di Oggetto1
+ *      const [titolo, setTitolo] = useState(props.item.titolo);
+ *      const [setContenuto, setContenuto] =  useState(props.item.contenuto);
+ * Istante t2 = l'utente modifica un valore in un input  ->  chiamata al setState della proprietà modificata dall'utente
+ * 
+ * Istante t3 = componente ridisegnato per cambio props  item={Oggetto2}    ->  in questo caso gli stati NON si resettano, perchè è un semplice ridisegno, non è il primo montaggio
+ * 
+ * !!!! PROBLEMA! la props è Oggetto2 ma i vostri stati contengono i valori di Oggetto1 !!!!!
+ * 
+ * 
+ * Soluzione?
+ * 
+ * useEffect(() => {
+ *      // Reset di tutti gli stati relativi al form
+ *      setTitolo(props.item.titolo);
+ *      setContenuto(props.item.contenuto);
+ * }, [props.item])
+ * 
+ */
+
+
+
+
+
+
+/***
+ * 
+ * const [user, setUser] = useState(null);
+ * 
+ * 
+ * 
+ * useEffect(() => // Caricamento dell'utente da API e setUser(..));
+ * 
+ * 
+ * return (
+ * {user == null && "loading" }
+ * {user != null && <>
+ *  <Figlio1   user={user} />
+ *  <Figlio2   user={user} />
+ * </>}
+ * )
+ */
